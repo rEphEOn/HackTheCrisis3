@@ -26,6 +26,7 @@
 
 import sys
 import uuid
+import datetime
 
 from twisted.internet import reactor
 from twisted.python import log
@@ -41,7 +42,7 @@ from autobahn.twisted.websocket import WebSocketServerFactory, \
     listenWS
 
 from autobahn.twisted.resource import WebSocketResource, WSGIRootResource
-
+last_handwash = datetime.datetime.now()
 app = Flask(__name__)
 app.secret_key = str(uuid.uuid4())
 
@@ -116,21 +117,19 @@ class BroadcastPreparedServerFactory(BroadcastServerFactory):
 def page_home():
     return render_template('index.html')
 
-# @app.route('/yee/<id>', methods=['POST'])
-# def broadcast_wash_of_hands(id):
-#     # content = request.json
-#     print(request.form.get("yee", ""))
-#     msg = f"{id} washed their hands!"
-#     #    return jsonify({"uuid":uuid})
-#     self.broadcast("tick %d from server" % msg)
-# @app.route('/yee/<id>', methods=['POST'])
-# def do_something(id):
-#     # content = request.json
-#     print('some text')
-#     print(request.form.get("yee", ""))
-#     print(id)
-#     #    return jsonify({"uuid":uuid})
-#     return "yeeah!"
+candy_in_ram = {}
+candy_amount = candy_in_ram
+
+def register_candy_receiver(id):
+    candy_in_ram[id] = 1
+
+def add_candy(id):
+    if id in candy_in_ram:
+        candy_in_ram[id] += 1
+    else:
+        register_candy_receiver(id)
+
+
 
 
 if __name__ == '__main__':
@@ -147,13 +146,22 @@ if __name__ == '__main__':
     wsgiResource = WSGIResource(reactor, reactor.getThreadPool(), app)
 
     # routing into broadcast
+
     @app.route('/yee/<id>', methods=['POST'])
     def broadcast_wash_of_hands(id):
-        # content = request.json
-        # print(request.form.get("yee", ""))
-        msg = f"{id} washed their hands!"
-        #    return jsonify({"uuid":uuid})
-        wsFactory.broadcast(msg)
+        global last_handwash
+        if (datetime.datetime.now() - last_handwash).seconds > 5:
+
+            # content = request.json
+            # print(request.form.get("yee", ""))
+            add_candy(id)
+            msg = f"Thank you for washing your hands, {id}\n{id} now has {candy_amount[id]} candies"
+            #    return jsonify({"uuid":uuid})
+            wsFactory.broadcast(msg)
+        else:
+            pass
+        # something =
+        last_handwash = datetime.datetime.now()
         return f"Thanks for washing the hands, {id}\n"
     # create a root resource serving everything via WSGI/Flask, but
     # the path "/ws" served by our WebSocket stuff

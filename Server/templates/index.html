@@ -26,7 +26,7 @@
 
             if (sock) {
                sock.onopen = function() {
-                  log("Connected to " + wsuri);
+                  {#log("Connected to " + wsuri);#}
                }
 
                sock.onclose = function(e) {
@@ -35,7 +35,13 @@
                }
 
                sock.onmessage = function(e) {
-                  log("Got echo: " + e.data);
+                  var lines = e.data.split('\n')
+                  {#console.log("HELLO");#}
+                  setTimeout(function(){
+                      {#log("THIS IS");#}
+                      log(lines[1]);
+                  }, 4000);
+                  log(lines[0]);
                }
             }
          };
@@ -51,18 +57,21 @@
          };
 
          function log(m) {
-            ellog.innerHTML += m + '\n';
-            ellog.scrollTop = ellog.scrollHeight;
+            ellog.innerHTML = m + '\n';
+            {#ellog.scrollTop = ellog.scrollHeight;#}
          };
       </script>
    </head>
    <body>
-      <h1>Autobahn WebSocket Broadcast Demo</h1>
+   <div align="center">
+      <h1>Hand washing station</h1>
       <noscript>You must enable JavaScript</noscript>
-      <form>
-         <p>Broadcast Message: <input id="message" type="text" size="50" maxlength="50" value="Hello from Browser!"></p>
-      </form>
-      <button onclick='broadcast();'>Broadcast Message</button>
-      <pre id="log" style="height: 20em; overflow-y: scroll; background-color: #faa;"></pre>
+      <iframe width="560" height="315" src="http://www.youtube.com/embed/GRonxog5mbw?autoplay=1&loop=1&playlist=GRonxog5mbw" frameborder="0" allowfullscreen></iframe>
+{#      <form>#}
+{#         <p>Broadcast Message: <input id="message" type="text" size="50" maxlength="50" value="Hello from Browser!"></p>#}
+{#      </form>#}
+{#      <button onclick='broadcast();'>Broadcast Message</button>#}
+      <p id="log" style="height: 3em; overflow-y: hidden; font-size: 80px;"></p>
+   </div>
    </body>
 </html>
