@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b73eab00-a1fc-4470-89c8-9b0693615950" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Server/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +69,8 @@
       <option name="presentableId" value="Default" />
       <updated>1586050554086</updated>
       <workItem from="1586050555498" duration="10623000" />
+      <workItem from="1586086677572" duration="117000" />
+      <workItem from="1586107758716" duration="1288000" />
     </task>
     <task id="LOCAL-00001" summary="minimized things a bit">
       <created>1586075288188</created>
@@ -86,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586084034376</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added YT vid">
+      <created>1586086770570</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586086770570</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,7 +104,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -106,6 +115,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="minimized things a bit" />
     <MESSAGE value="added delay" />
-    <option name="LAST_COMMIT_MESSAGE" value="added delay" />
+    <MESSAGE value="added YT vid" />
+    <option name="LAST_COMMIT_MESSAGE" value="added YT vid" />
   </component>
 </project>
