@@ -149,6 +149,7 @@ if __name__ == '__main__':
 
     @app.route('/yee/<id>', methods=['POST'])
     def broadcast_wash_of_hands(id):
+        # TODO: global is a no no
         global last_handwash
         if (datetime.datetime.now() - last_handwash).seconds > 5:
 
@@ -160,7 +161,6 @@ if __name__ == '__main__':
             wsFactory.broadcast(msg)
         else:
             pass
-        # something =
         last_handwash = datetime.datetime.now()
         return f"Thanks for washing the hands, {id}\n"
     # create a root resource serving everything via WSGI/Flask, but
