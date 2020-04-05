@@ -27,3 +27,5 @@ Solution flow:
 - backend server logs and, thourgh websockets, updates any subscribed browser displayed info
 - increment of reward pops up near employees' eyes
 - employee craves more candy, hence washes their hands more often
+
+![alt text](https://raw.githubusercontent.com/rEphEOn/HackTheCrisis3/master/IMG_20200405_205039.jpg)
